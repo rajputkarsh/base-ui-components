@@ -5,11 +5,10 @@ import { getRibbonSize } from "../utils/common";
 type RibbonSize = "sm" | "md" | "lg";
 
 interface RibbonProps {
-  color?: string;
   size?: RibbonSize;
 }
 
-function Ribbon({ color = "green", size = "md" }: RibbonProps) {
+function Ribbon({ size = "md" }: RibbonProps) {
   const [css] = useStyletron();
   const ribbonSize = getRibbonSize(size);
   return (
@@ -25,7 +24,7 @@ function Ribbon({ color = "green", size = "md" }: RibbonProps) {
         display: "inline-block",
         border: `double ${ribbonSize}rem transparent`,
         backgroundImage:
-          "linear-gradient(45deg, white, white), linear-gradient(45deg, green, transparent)",
+          "linear-gradient(45deg, white, transparent), linear-gradient(45deg, rgba(69, 161, 67, 0.95), transparent)",
         backgroundOrigin: "border-box",
         backgroundClip: "content-box, border-box",
       })}
