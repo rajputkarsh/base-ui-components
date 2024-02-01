@@ -12,6 +12,7 @@ interface AvatarProps {
   size?: AvatarSize;
   bgColor?: string;
   openToCollab?: boolean;
+  storyline?: boolean;
 }
 
 function Avatar({
@@ -20,10 +21,23 @@ function Avatar({
   bgColor = "#FFF",
   size = "md",
   openToCollab = false,
+  storyline = false,
 }: AvatarProps) {
   const [css] = useStyletron();
 
   const [shouldUseImage, setShouldUseImage] = useState(!!imageUrl);
+
+  let storyLineStyle = {};
+  if (storyline) {
+    storyLineStyle = {
+      border: `double 0.1rem transparent`,
+      backgroundImage:
+        "linear-gradient(45deg, red, red), linear-gradient(right, purple, red)",
+      backgroundOrigin: "border-box",
+      backgroundClip: "content-box, border-box",
+      padding: "0.1rem",
+    };
+  }
 
   return (
     <Block
@@ -36,6 +50,7 @@ function Avatar({
         backgroundColor: bgColor,
         borderRadius: "50%",
         position: "relative",
+        ...storyLineStyle,
       })}
     >
       {shouldUseImage ? (
@@ -53,7 +68,8 @@ function Avatar({
       ) : (
         <span
           className={css({
-            color: "#FFF",
+            color: openToCollab ? "green" : "white",
+            zIndex: 10,
             fontWeight: 600,
             fontSize: getTextSize(size),
           })}
