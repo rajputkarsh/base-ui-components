@@ -68,6 +68,17 @@ function App() {
           storyline={true}
         />
       </div>
+
+      <div className={componentStyle}>
+        <span className={componentTextStyle}>Avatar with all - </span>
+        <Avatar
+          name="Utkarsh"
+          imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+          bgColor="white"
+          storyline={true}
+          openToCollab={true}
+        />
+      </div>
     </div>
   );
 }

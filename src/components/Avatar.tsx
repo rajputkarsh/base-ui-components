@@ -15,29 +15,16 @@ interface AvatarProps {
   storyline?: boolean;
 }
 
-function Avatar({
+function AvatarComponent({
   name,
   imageUrl,
   bgColor = "#FFF",
   size = "md",
   openToCollab = false,
-  storyline = false,
-}: AvatarProps) {
+}: Exclude<AvatarProps, "storyline">) {
   const [css] = useStyletron();
 
   const [shouldUseImage, setShouldUseImage] = useState(!!imageUrl);
-
-  let storyLineStyle = {};
-  if (storyline) {
-    storyLineStyle = {
-      border: `double 0.1rem transparent`,
-      backgroundImage:
-        "linear-gradient(45deg, red, red), linear-gradient(right, purple, red)",
-      backgroundOrigin: "border-box",
-      backgroundClip: "content-box, border-box",
-      padding: "0.1rem",
-    };
-  }
 
   return (
     <Block
@@ -47,10 +34,9 @@ function Avatar({
         justifyContent: "center",
         width: getComponentSize(size),
         height: getComponentSize(size),
-        backgroundColor: bgColor,
+        backgroundColor: shouldUseImage ? "transparent" : bgColor,
         borderRadius: "50%",
         position: "relative",
-        ...storyLineStyle,
       })}
     >
       {shouldUseImage ? (
@@ -80,6 +66,50 @@ function Avatar({
 
       {openToCollab && <Ribbon />}
     </Block>
+  );
+}
+
+function Avatar({
+  name,
+  imageUrl,
+  bgColor = "#FFF",
+  size = "md",
+  openToCollab = false,
+  storyline = false,
+}: AvatarProps) {
+  const [css] = useStyletron();
+  if (storyline) {
+    return (
+      <Block
+        className={css({
+          borderRadius: "50%",
+          border: `double 0.05rem transparent`,
+          backgroundImage:
+            "linear-gradient(45deg, red, red), linear-gradient(right, purple, red)",
+          backgroundOrigin: "border-box",
+          backgroundClip: "content-box, border-box",
+          padding: "0.1rem",
+        })}
+      >
+        <AvatarComponent
+          name={name}
+          imageUrl={imageUrl}
+          bgColor={bgColor}
+          size={size}
+          openToCollab={openToCollab}
+        />
+      </Block>
+    );
+  }
+
+  return (
+    <AvatarComponent
+      name={name}
+      imageUrl={imageUrl}
+      bgColor={bgColor}
+      size={size}
+      openToCollab={openToCollab}
+    />
   );
 }
 
