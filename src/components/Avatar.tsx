@@ -37,6 +37,9 @@ function AvatarComponent({
         backgroundColor: shouldUseImage ? "transparent" : bgColor,
         borderRadius: "50%",
         position: "relative",
+        border: `${
+          !shouldUseImage && openToCollab ? "0.05rem solid green" : "none"
+        } `,
       })}
     >
       {shouldUseImage ? (

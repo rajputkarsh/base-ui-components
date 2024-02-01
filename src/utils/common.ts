@@ -24,18 +24,6 @@ export const getTextSize = (size: AvailableSize): string => {
   return "2rem";
 };
 
-export const getRibbonSize = (size: AvailableSize): number => {
-  if (size === "sm") {
-    return 0.25;
-  } else if (size === "md") {
-    return 0.5;
-  } else if (size === "lg") {
-    return 1;
-  }
-
-  return 0.5;
-};
-
 export const getInitials = (str: string): string => {
   return str
     .split(/\s/)
