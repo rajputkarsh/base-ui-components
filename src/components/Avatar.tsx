@@ -1,24 +1,30 @@
 import { useStyletron } from "baseui";
 import { Block } from "baseui/block";
 import { getInitials, getComponentSize, getTextSize } from "../utils/common";
+import { useState } from "react";
 
 type AvatarSize = "sm" | "md" | "lg";
 
 interface AvatarProps {
   name: string;
-  imgUrl?: string;
+  imageUrl?: string;
   size?: AvatarSize;
   bgColor?: string;
 }
 
-function Avatar({ name, imgUrl, bgColor = "#FFF", size = "md" }: AvatarProps) {
+function Avatar({
+  name,
+  imageUrl,
+  bgColor = "#FFF",
+  size = "md",
+}: AvatarProps) {
   const [css] = useStyletron();
 
-  const shouldUseImage = !!imgUrl;
+  const [shouldUseImage, setShouldUseImage] = useState(!!imageUrl);
 
   return (
     <Block
-      style={{
+      className={css({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -26,10 +32,20 @@ function Avatar({ name, imgUrl, bgColor = "#FFF", size = "md" }: AvatarProps) {
         height: getComponentSize(size),
         backgroundColor: bgColor,
         borderRadius: "50%",
-      }}
+      })}
     >
       {shouldUseImage ? (
-        <img src={imgUrl} />
+        <img
+          src={imageUrl}
+          className={css({
+            maxWidth: getComponentSize(size),
+            maxHeight: getComponentSize(size),
+            borderRadius: "50%",
+          })}
+          onError={() => {
+            setShouldUseImage(false);
+          }}
+        />
       ) : (
         <span
           className={css({
