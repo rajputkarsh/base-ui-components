@@ -37,6 +37,13 @@ function App() {
           bgColor="red"
         />
       </div>
+
+      <div className={componentStyle}>
+        <span className={componentTextStyle}>
+          Avatar with text and ribbon -{" "}
+        </span>
+        <Avatar name="Utkarsh" bgColor="white" openToCollab={true} />
+      </div>
     </div>
   );
 }

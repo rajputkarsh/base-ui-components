@@ -2,6 +2,7 @@ import { useStyletron } from "baseui";
 import { Block } from "baseui/block";
 import { getInitials, getComponentSize, getTextSize } from "../utils/common";
 import { useState } from "react";
+import Ribbon from "./Ribbon";
 
 type AvatarSize = "sm" | "md" | "lg";
 
@@ -10,6 +11,7 @@ interface AvatarProps {
   imageUrl?: string;
   size?: AvatarSize;
   bgColor?: string;
+  openToCollab?: boolean;
 }
 
 function Avatar({
@@ -17,6 +19,7 @@ function Avatar({
   imageUrl,
   bgColor = "#FFF",
   size = "md",
+  openToCollab = false,
 }: AvatarProps) {
   const [css] = useStyletron();
 
@@ -32,6 +35,7 @@ function Avatar({
         height: getComponentSize(size),
         backgroundColor: bgColor,
         borderRadius: "50%",
+        position: "relative",
       })}
     >
       {shouldUseImage ? (
@@ -57,6 +61,8 @@ function Avatar({
           {getInitials(name)}
         </span>
       )}
+
+      {openToCollab && <Ribbon />}
     </Block>
   );
 }
