@@ -7,6 +7,7 @@ Deployment URL - (https://base-ui-components.vercel.app/)
 1. Avatar
    |    **Props**    | **Required** |
    |    :---:    |   :---:  |
+   |    size     |    No    |
    |    name     |    Yes   |
    |    :---:    |   :---:  |
    |   imageUrl  |    No    |
