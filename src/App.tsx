@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="appRoute">
       <h2 className="margin-bottom">
-        <u>Base UI Components</u>
+        <u>BaseUI Components</u>
       </h2>
 
       <div className={componentStyle}>
@@ -42,7 +42,7 @@ function App() {
         <span className={componentTextStyle}>
           Avatar with text and ribbon -{" "}
         </span>
-        <Avatar name="Utkarsh" bgColor="white" openToCollab={true} />
+        <Avatar name="Utkarsh" bgColor="white" showRibbon={true} />
       </div>
 
       <div className={componentStyle}>
@@ -53,7 +53,7 @@ function App() {
           name="Utkarsh"
           imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
           bgColor="white"
-          openToCollab={true}
+          showRibbon={true}
         />
       </div>
 
@@ -76,7 +76,7 @@ function App() {
           imageUrl="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
           bgColor="white"
           storyline={true}
-          openToCollab={true}
+          showRibbon={true}
         />
       </div>
     </div>

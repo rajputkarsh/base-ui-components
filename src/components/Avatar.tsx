@@ -11,7 +11,7 @@ interface AvatarProps {
   imageUrl?: string;
   size?: AvatarSize;
   bgColor?: string;
-  openToCollab?: boolean;
+  showRibbon?: boolean;
   storyline?: boolean;
 }
 
@@ -20,7 +20,7 @@ function AvatarComponent({
   imageUrl,
   bgColor = "#FFF",
   size = "md",
-  openToCollab = false,
+  showRibbon = false,
 }: Exclude<AvatarProps, "storyline">) {
   const [css] = useStyletron();
 
@@ -38,7 +38,7 @@ function AvatarComponent({
         borderRadius: "50%",
         position: "relative",
         border: `${
-          !shouldUseImage && openToCollab ? "0.05rem solid green" : "none"
+          !shouldUseImage && showRibbon ? "0.05rem solid green" : "none"
         } `,
       })}
     >
@@ -57,7 +57,7 @@ function AvatarComponent({
       ) : (
         <span
           className={css({
-            color: openToCollab ? "green" : "white",
+            color: showRibbon ? "green" : "white",
             zIndex: 10,
             fontWeight: 600,
             fontSize: getTextSize(size),
@@ -67,7 +67,7 @@ function AvatarComponent({
         </span>
       )}
 
-      {openToCollab && <Ribbon />}
+      {showRibbon && <Ribbon />}
     </Block>
   );
 }
@@ -77,7 +77,7 @@ function Avatar({
   imageUrl,
   bgColor = "#FFF",
   size = "md",
-  openToCollab = false,
+  showRibbon = false,
   storyline = false,
 }: AvatarProps) {
   const [css] = useStyletron();
@@ -99,7 +99,7 @@ function Avatar({
           imageUrl={imageUrl}
           bgColor={bgColor}
           size={size}
-          openToCollab={openToCollab}
+          showRibbon={showRibbon}
         />
       </Block>
     );
@@ -111,7 +111,7 @@ function Avatar({
       imageUrl={imageUrl}
       bgColor={bgColor}
       size={size}
-      openToCollab={openToCollab}
+      showRibbon={showRibbon}
     />
   );
 }
