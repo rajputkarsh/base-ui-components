@@ -9,11 +9,7 @@ Deployment URL - (https://base-ui-components.vercel.app/)
    |    :---:    |   :---:  |
    |    size     |    No    |
    |    name     |    Yes   |
-   |    :---:    |   :---:  |
    |   imageUrl  |    No    |
-   |    :---:    |   :---:  |
    |   bgColor   |    No    |
-   |    :---:    |   :---:  |
    |  storyline  |    No    |
-   |    :---:    |   :---:  |
    | showRibbon  |    No    |
